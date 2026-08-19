@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>StudentHub - Login</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+
+    <style>
+
+        /* =================================
+           LOGIN SUCCESS POPUP
+        ================================= */
+
+        #loginSuccessPopup {
+
+            position: fixed;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 100%;
+
+            background: rgba(0, 0, 0, 0.65);
+
+            display: none;
+
+            justify-content: center;
+            align-items: center;
+
+            z-index: 99999;
+
+        }
+
+
+        #loginSuccessPopup.show {
+
+            display: flex;
+
+        }
+
+
+        .login-success-box {
+
+            background: white;
+
+            width: 400px;
+            max-width: 85%;
+
+            padding: 35px;
+
+            text-align: center;
+
+            border-radius: 20px;
+
+            box-shadow:
+                0 15px 40px rgba(0, 0, 0, 0.3);
+
+            animation:
+                loginPopupAnimation 0.3s ease;
+
+        }
+
+
+        @keyframes loginPopupAnimation {
+
+            from {
+
+                transform: scale(0.5);
+
+                opacity: 0;
+
+            }
+
+            to {
+
+                transform: scale(1);
+
+                opacity: 1;
+
+            }
+
+        }
+
+
+        /* =================================
+           SUCCESS ICON
+        ================================= */
+
+        .login-success-icon {
+
+            width: 75px;
+            height: 75px;
+
+            margin: 0 auto 20px;
+
+            border-radius: 50%;
+
+            background: linear-gradient(
+                135deg,
+                #00b09b,
+                #96c93d
+            );
+
+            color: white;
+
+            font-size: 48px;
+
+            font-weight: bold;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+        }
+
+
+        /* =================================
+           POPUP HEADING
+        ================================= */
+
+        .login-success-box h2 {
+
+            color: #6a11cb;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        /* =================================
+           POPUP TEXT
+        ================================= */
+
+        .login-success-box p {
+
+            color: #555;
+
+            font-size: 16px;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        /* =================================
+           CONTINUE BUTTON
+        ================================= */
+
+        #loginCloseSuccess {
+
+            border: none;
+
+            background: linear-gradient(
+                135deg,
+                #6a11cb,
+                #2575fc
+            );
+
+            color: white;
+
+            padding: 12px 30px;
+
+            border-radius: 25px;
+
+            font-size: 16px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+
+        }
+
+
+        #loginCloseSuccess:hover {
+
+            transform: scale(1.05);
+
+            box-shadow:
+                0 5px 15px rgba(
+                    37,
+                    117,
+                    252,
+                    0.4
+                );
+
+        }
+
+
+        /* =================================
+           LOGIN LINK
+        ================================= */
+
+        .register-link {
+
+            text-align: center;
+
+            margin-top: 20px;
+
+        }
+
+
+        .register-link a {
+
+            color: #6a11cb;
+
+            font-weight: bold;
+
+            text-decoration: none;
+
+        }
+
+
+        .register-link a:hover {
+
+            color: #2575fc;
+
+            text-decoration: underline;
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ===============================
+         HEADER
+    ================================ -->
+
+    <header>
+
+        <h1>StudentHub</h1>
+
+        <p>Welcome back to StudentHub</p>
+
+    </header>
+
+
+    <!-- ===============================
+         MAIN
+    ================================ -->
+
+    <main>
+
+        <section>
+
+            <h2>Login</h2>
+
+
+            <form id="loginForm">
+
+
+                <!-- EMAIL -->
+
+                <label for="email">
+                    Email
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Enter your email"
+                    required
+                >
+
+
+                <!-- PASSWORD -->
+
+                <label for="password">
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Enter your password"
+                    required
+                >
+
+
+                <!-- LOGIN BUTTON -->
+
+                <input
+                    type="submit"
+                    value="Login"
+                >
+
+                <input
+                    type="reset"
+                    value="Reset"
+                >
+
+            </form>
+
+
+            <!-- REGISTER LINK -->
+
+            <div class="register-link">
+
+                <p>
+                    Don't have an account?
+
+                    <a href="register.html">
+                        Register here
+                    </a>
+
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ===============================
+         FOOTER
+    ================================ -->
+
+    <footer>
+
+        <p>
+            © 2026 StudentHub Portal
+        </p>
+
+    </footer>
+
+
+    <!-- ===============================
+         LOGIN SUCCESS POPUP
+    ================================ -->
+
+    <div id="loginSuccessPopup">
+
+        <div class="login-success-box">
+
+            <div class="login-success-icon">
+                ✓
+            </div>
+
+            <h2>
+                Login Successful! 🔐
+            </h2>
+
+            <p>
+                Welcome back to StudentHub!
+                You have successfully logged in.
+            </p>
+
+            <button
+                type="button"
+                id="loginCloseSuccess">
+
+                Continue
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- ===============================
+         JAVASCRIPT
+    ================================ -->
+
+    <script>
+
+        // Get login form
+
+        const loginForm =
+            document.getElementById(
+                "loginForm"
+            );
+
+
+        // Get popup
+
+        const loginSuccessPopup =
+            document.getElementById(
+                "loginSuccessPopup"
+            );
+
+
+        // Get close button
+
+        const loginCloseSuccess =
+            document.getElementById(
+                "loginCloseSuccess"
+            );
+
+
+        // =================================
+        // LOGIN FORM SUBMISSION
+        // =================================
+
+        loginForm.addEventListener(
+            "submit",
+            function(event) {
+
+                // Prevent page refresh
+
+                event.preventDefault();
+
+
+                // Get values
+
+                const email =
+                    document.getElementById(
+                        "email"
+                    ).value.trim();
+
+
+                const password =
+                    document.getElementById(
+                        "password"
+                    ).value.trim();
+
+
+                // =================================
+                // VALIDATION
+                // =================================
+
+                if (
+                    email === "" ||
+                    password === ""
+                ) {
+
+                    alert(
+                        "Please enter your email and password."
+                    );
+
+                    return;
+
+                }
+
+
+                // =================================
+                // SHOW SUCCESS POPUP
+                // =================================
+
+                loginSuccessPopup.classList.add(
+                    "show"
+                );
+
+            }
+        );
+
+
+        // =================================
+        // CLOSE POPUP
+        // =================================
+
+        loginCloseSuccess.addEventListener(
+            "click",
+            function() {
+
+                loginSuccessPopup.classList.remove(
+                    "show"
+                );
+
+                loginForm.reset();
+
+            }
+        );
+
+
+        // =================================
+        // CLICK OUTSIDE POPUP TO CLOSE
+        // =================================
+
+        loginSuccessPopup.addEventListener(
+            "click",
+            function(event) {
+
+                if (
+                    event.target ===
+                    loginSuccessPopup
+                ) {
+
+                    loginSuccessPopup.classList.remove(
+                        "show"
+                    );
+
+                }
+
+            }
+        );
+
+    </script>
+
+
+</body>
+
+</html>
