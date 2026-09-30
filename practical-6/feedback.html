@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        StudentHub | Feedback
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+</head>
+
+<body>
+
+<header>
+
+    <h1>
+        StudentHub Portal
+    </h1>
+
+    <p>
+        Student Feedback
+    </p>
+
+</header>
+
+
+<main>
+
+<section>
+
+    <h2>
+        Feedback Form
+    </h2>
+
+    <form
+        action="feedback.php"
+        method="POST"
+    >
+
+        <label for="name">
+            Full Name
+        </label>
+
+        <input
+            type="text"
+            id="name"
+            name="name"
+            required
+        >
+
+
+        <label for="email">
+            Email
+        </label>
+
+        <input
+            type="email"
+            id="email"
+            name="email"
+            required
+        >
+
+
+        <label for="course">
+            Course
+        </label>
+
+        <select
+            id="course"
+            name="course"
+        >
+
+            <option>
+                B.Tech
+            </option>
+
+            <option>
+                BCA
+            </option>
+
+            <option>
+                BBA
+            </option>
+
+            <option>
+                B.Com
+            </option>
+
+        </select>
+
+
+        <label>
+            Overall Experience
+        </label>
+
+
+        <div class="radio-group">
+
+            <label>
+
+                <input
+                    type="radio"
+                    name="rating"
+                    value="Excellent"
+                    required
+                >
+
+                Excellent
+
+            </label>
+
+
+            <label>
+
+                <input
+                    type="radio"
+                    name="rating"
+                    value="Good"
+                >
+
+                Good
+
+            </label>
+
+
+            <label>
+
+                <input
+                    type="radio"
+                    name="rating"
+                    value="Average"
+                >
+
+                Average
+
+            </label>
+
+
+            <label>
+
+                <input
+                    type="radio"
+                    name="rating"
+                    value="Poor"
+                >
+
+                Poor
+
+            </label>
+
+        </div>
+
+
+        <label for="message">
+            Feedback
+        </label>
+
+        <textarea
+            id="message"
+            name="message"
+            rows="6"
+            required
+        ></textarea>
+
+
+        <br><br>
+
+        <input
+            type="submit"
+            value="Submit Feedback"
+        >
+
+        <input
+            type="reset"
+            value="Clear"
+        >
+
+    </form>
+
+</section>
+
+</main>
+
+
+<footer>
+
+    <p>
+        © 2026 StudentHub Portal
+    </p>
+
+</footer>
+
+</body>
+
+</html>

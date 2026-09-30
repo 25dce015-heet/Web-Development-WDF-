@@ -1,0 +1,92 @@
+[
+    {
+        "id": 1,
+        "name": "Freshers Party",
+        "date": "2026-10-10",
+        "venue": "College Auditorium"
+    },
+    {
+        "id": 2,
+        "name": "Technical Hackathon",
+        "date": "2026-10-18",
+        "venue": "Innovation Lab"
+    },
+    {
+        "id": 3,
+        "name": "Sports Day",
+        "date": "2026-10-25",
+        "venue": "College Ground"
+    },
+    {
+        "id": 4,
+        "name": "Cultural Festival",
+        "date": "2026-11-05",
+        "venue": "Main Campus"
+    },
+    {
+        "id": 5,
+        "name": "Tech Talk",
+        "date": "2026-11-10",
+        "venue": "Seminar Hall"
+    },
+    {
+        "id": 6,
+        "name": "Coding Competition",
+        "date": "2026-11-15",
+        "venue": "Computer Lab"
+    },
+    {
+        "id": 7,
+        "name": "Photography Contest",
+        "date": "2026-11-20",
+        "venue": "Activity Hall"
+    },
+    {
+        "id": 8,
+        "name": "Robotics Workshop",
+        "date": "2026-11-25",
+        "venue": "Robotics Lab"
+    },
+    {
+        "id": 9,
+        "name": "Career Seminar",
+        "date": "2026-12-01",
+        "venue": "Seminar Hall"
+    },
+    {
+        "id": 10,
+        "name": "Science Exhibition",
+        "date": "2026-12-05",
+        "venue": "Exhibition Hall"
+    },
+    {
+        "id": 11,
+        "name": "Music Night",
+        "date": "2026-12-10",
+        "venue": "College Ground"
+    },
+    {
+        "id": 12,
+        "name": "Quiz Competition",
+        "date": "2026-12-15",
+        "venue": "Room 101"
+    },
+    {
+        "id": 13,
+        "name": "Coding Workshop",
+        "date": "2026-12-20",
+        "venue": "Computer Lab"
+    },
+    {
+        "id": 14,
+        "name": "Annual Function",
+        "date": "2027-01-05",
+        "venue": "Auditorium"
+    },
+    {
+        "id": 15,
+        "name": "Farewell Party",
+        "date": "2027-01-15",
+        "venue": "Main Campus"
+    }
+]

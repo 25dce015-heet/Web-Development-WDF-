@@ -1,0 +1,77 @@
+[
+    {
+        "id": 1,
+        "question": "What is StudentHub?",
+        "answer": "StudentHub is a student management portal."
+    },
+    {
+        "id": 2,
+        "question": "How do I register?",
+        "answer": "Open the Register page and complete the registration form."
+    },
+    {
+        "id": 3,
+        "question": "How do I login?",
+        "answer": "Use your registered email and password."
+    },
+    {
+        "id": 4,
+        "question": "Can I view attendance?",
+        "answer": "Yes, attendance can be viewed from the Attendance page."
+    },
+    {
+        "id": 5,
+        "question": "Can I view results?",
+        "answer": "Yes, results are available from the Results page."
+    },
+    {
+        "id": 6,
+        "question": "Where can I find assignments?",
+        "answer": "Open the Assignments page."
+    },
+    {
+        "id": 7,
+        "question": "Where can I see courses?",
+        "answer": "Open the Courses page."
+    },
+    {
+        "id": 8,
+        "question": "Where is the timetable?",
+        "answer": "Open the Timetable page."
+    },
+    {
+        "id": 9,
+        "question": "Can I submit feedback?",
+        "answer": "Yes, use the Feedback page."
+    },
+    {
+        "id": 10,
+        "question": "Can I contact StudentHub?",
+        "answer": "Yes, use the Contact page."
+    },
+    {
+        "id": 11,
+        "question": "What is the dashboard?",
+        "answer": "The dashboard provides access to student modules."
+    },
+    {
+        "id": 12,
+        "question": "Can I logout?",
+        "answer": "Yes, click the Logout option."
+    },
+    {
+        "id": 13,
+        "question": "Is registration required?",
+        "answer": "Registration is required before login."
+    },
+    {
+        "id": 14,
+        "question": "Is the website responsive?",
+        "answer": "Yes, the CSS includes responsive layouts."
+    },
+    {
+        "id": 15,
+        "question": "Does StudentHub use JavaScript?",
+        "answer": "Yes, JavaScript is used for client-side interactivity."
+    }
+]

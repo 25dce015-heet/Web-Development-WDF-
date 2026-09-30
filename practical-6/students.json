@@ -1,0 +1,22 @@
+[
+    {
+        "name": "Heet Chaudhary",
+        "email": "heetkumarchaudhary2008@gmail.com",
+        "mobile": "7862001540",
+        "password": "$2y$10$fawKBHetVJlrjM.XJ9esiO5hA6tkrHeXMT78hZV1Z68x9hVgO\/Jhe",
+        "course": "B.Tech",
+        "year": "Second Year",
+        "gender": "Male",
+        "registered_at": "2026-09-29 21:03:43"
+    },
+    {
+        "name": "Heet Chaudhary",
+        "email": "coreme09@gmail.com",
+        "mobile": "9426627122",
+        "password": "$2y$10$T\/qnp2yGPYPdrmS8YrRVMeIi\/9QgWP\/E4kvo8eBk3Xc\/N4Gar2TiK",
+        "course": "B.Tech",
+        "year": "First Year",
+        "gender": "Male",
+        "registered_at": "2026-09-29 21:04:50"
+    }
+]
