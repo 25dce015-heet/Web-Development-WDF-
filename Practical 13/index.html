@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practical 13 - Asynchronous Fetch API CRUD</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background-color: #f4f6f9;
+            padding: 30px 15px;
+        }
+        .container {
+            max-width: 1050px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            color: #007bff;
+            font-size: 24px;
+        }
+        .header p {
+            color: #666;
+            font-size: 13px;
+        }
+        .alert-box {
+            display: none;
+            padding: 12px 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        .alert-box.success {
+            display: block;
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .alert-box.danger {
+            display: block;
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .toolbar {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .search-box {
+            flex: 1;
+            padding: 10px 14px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 14px;
+            outline: none;
+        }
+        .search-box:focus {
+            border-color: #007bff;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 18px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+            text-decoration: none;
+        }
+        .btn-success { background-color: #28a745; color: white; }
+        .btn-primary { background-color: #007bff; color: white; }
+        .btn-warning { background-color: #ffc107; color: #212529; }
+        .btn-danger { background-color: #dc3545; color: white; }
+        .btn-secondary { background-color: #6c757d; color: white; }
+        .btn-sm { padding: 5px 10px; font-size: 12px; }
+        .btn:hover { opacity: 0.9; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+            font-size: 13px;
+        }
+        th {
+            background-color: #f8f9fa;
+            font-weight: bold;
+        }
+        tr:hover { background-color: #f9fbfd; }
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .badge-upcoming { background: #d4edda; color: #155724; }
+        .badge-completed { background: #e2e3e5; color: #383d41; }
+        .loading {
+            text-align: center;
+            padding: 30px;
+            color: #666;
+            font-size: 16px;
+        }
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+        }
+        .modal-overlay.active {
+            display: flex;
+        }
+        .modal-content {
+            background: white;
+            width: 520px;
+            max-width: 90%;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        .modal-content h2 {
+            margin-bottom: 15px;
+            font-size: 20px;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 14px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            font-size: 13px;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        .modal-content input, .modal-content select, .modal-content textarea {
+            width: 100%;
+            padding: 9px 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+            outline: none;
+        }
+        .modal-content textarea {
+            resize: vertical;
+            min-height: 70px;
+        }
+        .row-2 {
+            display: flex;
+            gap: 12px;
+        }
+        .row-2 .form-group { flex: 1; }
+        .modal-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 18px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <div>
+            <h1>Async Event Management (Fetch API)</h1>
+            <p>Practical 13: PHP JSON API with Zero Page Reload AJAX CRUD</p>
+        </div>
+        <button class="btn btn-success" onclick="openAddModal()">+ Add New Event</button>
+    </div>
+
+    <div id="alertBox" class="alert-box"></div>
+
+    <div class="toolbar">
+        <input type="text" id="searchInput" class="search-box" placeholder="Search events by title, venue, or category in real-time..." onkeyup="filterEvents()">
+        <button class="btn btn-secondary" onclick="fetchEvents()">Refresh List</button>
+    </div>
+
+    <div id="tableContainer">
+        <div id="loadingIndicator" class="loading">Loading events from API...</div>
+        <table id="eventsTable" style="display:none;">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Event Title</th>
+                    <th>Date & Time</th>
+                    <th>Venue</th>
+                    <th>Category</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="eventsBody"></tbody>
+        </table>
+    </div>
+</div>
+
+<div id="eventModal" class="modal-overlay">
+    <div class="modal-content">
+        <h2 id="modalTitle">Add New Event</h2>
+        <form id="eventForm" onsubmit="handleFormSubmit(event)">
+            <input type="hidden" id="eventId">
+
+            <div class="form-group">
+                <label for="eventTitle">Event Title</label>
+                <input type="text" id="eventTitle" required>
+            </div>
+
+            <div class="row-2">
+                <div class="form-group">
+                    <label for="eventDate">Date</label>
+                    <input type="date" id="eventDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="eventTime">Time</label>
+                    <input type="time" id="eventTime" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="eventVenue">Venue</label>
+                <input type="text" id="eventVenue" required>
+            </div>
+
+            <div class="row-2">
+                <div class="form-group">
+                    <label for="eventCategory">Category</label>
+                    <select id="eventCategory">
+                        <option value="Technical">Technical</option>
+                        <option value="Seminar">Seminar</option>
+                        <option value="Workshop">Workshop</option>
+                        <option value="Cultural & Tech">Cultural & Tech</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="eventStatus">Status</label>
+                    <select id="eventStatus">
+                        <option value="Upcoming">Upcoming</option>
+                        <option value="Completed">Completed</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="eventDesc">Description</label>
+                <textarea id="eventDesc"></textarea>
+            </div>
+
+            <div class="modal-actions">
+                <button type="button" class="btn btn-secondary" onclick="closeModal()">Cancel</button>
+                <button type="submit" class="btn btn-primary" id="saveButton">Save Event</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
